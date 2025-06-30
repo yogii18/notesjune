@@ -1,0 +1,16 @@
+loki: 
+  enabled: true 
+  persistence: 
+    enabled: true 
+    size: 25Gi   
+promtail: 
+  enabled: false  
+grafana: 
+  enabled: true 
+  persistence: 
+    enabled: true 
+    storageClassName: "" 
+    accessModes: 
+      - ReadWriteOnce 
+    size: 10Gi 
+    existingClaim: grafana-pvc 

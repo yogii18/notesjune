@@ -1,0 +1,41 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-ingress-canary
+#   annotations:
+#     nginx.ingress.kubernetes.io/canary: "true"
+#     nginx.ingress.kubernetes.io/canary-weight: "30"  # 30% traffic to v2
+# spec:
+#   rules:
+#   - host: canaryapache.skill-mine.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: nginx-v2-service
+#             port:
+#               number: 80
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canary-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "30"  # Adjust percentage
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: nginxtest.skill-mine.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: apache-canary
+                port:
+                  number: 80

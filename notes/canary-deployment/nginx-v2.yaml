@@ -1,0 +1,50 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nginx-v2
+#   labels:
+#     app: nginx
+#     version: v2
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: nginx
+#       version: v2
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx
+#         version: v2
+#     spec:
+#       containers:
+#       - name: nginx
+#         image: nginx:1.23
+#         ports:
+#         - containerPort: 80
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-canary
+  labels:
+    app: myapp
+    version: canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: myapp
+        version: canary
+    spec:
+      containers:
+        - name: apache
+          image: httpd:2.4
+          ports:
+            - containerPort: 80

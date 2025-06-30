@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+  name: monitor-ingress
+  namespace: monitoring
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: monitor-test-aws.skill-mine.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: loki-grafana
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  # - host: monitor-loki-dev.skill-mine.com
+  #   http:
+  #     paths:
+  #     - backend:
+  #         service:
+  #           name: loki
+  #           port:
+  #             number: 3100
+  #       path: /
+  #       pathType: Prefix

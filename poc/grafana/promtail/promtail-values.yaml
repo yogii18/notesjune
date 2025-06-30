@@ -1,0 +1,7 @@
+tolerations:
+  - operator: Exists
+config:
+  clients:
+    - url: http://209.38.121.59:31915/loki/api/v1/push
+      external_labels:
+        cluster: rnd-cluster-3

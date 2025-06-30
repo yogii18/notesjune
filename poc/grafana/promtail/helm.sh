@@ -1,0 +1,1 @@
+helm install promtail grafana/promtail --create-namespace -n monitoring --values promtail-values.yaml
